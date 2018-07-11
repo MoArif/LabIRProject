@@ -1,1 +1,17 @@
 tweet_data.txt
+tweet_happy.txt
+*.txt
+*.d2v
+*.bin
+happy_tweets_test.txt
+happy_tweets.txt
+tempmodel.txt
+tempmodel.bin
+sad_tweets.txt
+sad_tweets_test.txt
+tweet_data.txt
+tweet_happy.txt
+tweet_sad.txt
+twitterModel.d2v
+Untitled.ipynb
+untitled
