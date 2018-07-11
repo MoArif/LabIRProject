@@ -14,6 +14,8 @@ import numpy
 
 # classifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 # random
 import random
@@ -87,6 +89,39 @@ for i in range(10):
     test_arrays[10 + i] = model[prefix_test_neg]
     test_labels[i] = 1
     test_labels[10 + i] = 0
+import numpy as np
+import matplotlib.pyplot as plt
+h = .02
+x_min, x_max = train_arrays[:, 0].min() - .5, train_arrays[:, 0].max() + .5
+y_min, y_max = train_arrays[:, 1].min() - .5, train_arrays[:, 1].max() + .5
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                         np.arange(y_min, y_max, h))
 
-classifier = LogisticRegression(solver='lbfgs')
+#classifier = LogisticRegression(solver='lbfgs')
+classifier =  KNeighborsClassifier(2)
+
 classifier.fit(train_arrays, train_labels)
+classifier.score(test_arrays,test_labels)
+#ax = plt.figure()
+#if hasattr(classifier, "decision_function"):
+#    Z = classifier.decision_function(np.c_[xx.ravel(), yy.ravel()])
+#else:
+#    Z = classifier.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+#    cm = plt.cm.RdBu
+#
+#    # Put the result into a color plot
+#    Z = Z.reshape(xx.shape)
+#    ax.contourf(xx, yy, Z, cmap=cm, alpha=.8)
+#    
+#    # Plot also the training points
+#    ax.scatter(train_arrays[:, 0], train_arrays[:, 1], c=train_labels, cmap=cm,
+#               edgecolors='k')
+#    # and testing points
+#    ax.scatter(test_arrays[:, 0], test_arrays[:, 1], c=y_test, cmap=cm_bright,
+#               edgecolors='k', alpha=0.6)
+#    
+#    ax.set_xlim(xx.min(), xx.max())
+#    ax.set_ylim(yy.min(), yy.max())
+#    ax.set_xticks(())
+#    ax.set_yticks(())
+
